@@ -10,12 +10,12 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -45,6 +45,28 @@ public class BadIOGUI {
         canvas.add(write, BorderLayout.CENTER);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        /*Ex 01.01 */
+        final JPanel myPanel = new JPanel();
+        myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.X_AXIS));
+        canvas.remove(write);
+        canvas.add(myPanel, BorderLayout.CENTER);
+        myPanel.add(write);
+        /*Ex 01.02 */
+        final JButton read = new JButton("Read");
+        myPanel.add(read);
+         /*Ex 01.03 */
+        read.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                try (BufferedReader bReader = new BufferedReader(new FileReader(PATH, StandardCharsets.UTF_8))) {
+                    System.out.println(bReader.readLine()); //NOPMD just a simple exercise
+                } catch (IOException ioe) {
+                    System.err.println("ERROR"); //NOPMD just a simple exercise
+                }
+            }
+
+        });
         /*
          * Handlers
          */
@@ -90,6 +112,7 @@ public class BadIOGUI {
         /*
          * OK, ready to push the frame onscreen
          */
+        frame.pack();
         frame.setVisible(true);
     }
 
