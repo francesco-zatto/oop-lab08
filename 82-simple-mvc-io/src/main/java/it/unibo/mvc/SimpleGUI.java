@@ -60,7 +60,7 @@ public final class SimpleGUI {
     }
 
     public static void main(String[] args) {
-        final SimpleGUI myGUI = new SimpleGUI();
+        final var myGUI = new SimpleGUI();
         myGUI.display();
     }
 
