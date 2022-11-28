@@ -27,7 +27,7 @@ public class Controller {
     }
 
     public void writeOnCurrentFile(final String content) throws IOException {
-        final FileWriter fWriter = new FileWriter(this.currentFile);
+        final FileWriter fWriter = new FileWriter(this.currentFile, true);
         fWriter.append(content);
         fWriter.close();
     }

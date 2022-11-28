@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +24,7 @@ public final class SimpleGUI {
     private final JPanel panel;
     private final JTextArea textArea;
     private final JButton button;
+    private final Controller controller = new Controller();
 
     public SimpleGUI() {
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,7 +39,12 @@ public final class SimpleGUI {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //TODO: add action when button pressed and Save the text in contextArea
+                try {
+                    controller.writeOnCurrentFile(textArea.getText());
+                    textArea.setText("");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             
         });
@@ -55,7 +62,6 @@ public final class SimpleGUI {
     public static void main(String[] args) {
         final SimpleGUI myGUI = new SimpleGUI();
         myGUI.display();
-
     }
 
 }
