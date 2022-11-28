@@ -20,8 +20,7 @@ import javax.swing.JTextField;
  * A very simple program using a graphical interface.
  * 
  */
-public final class SimpleGUIWithFileChooser {
-    
+public final class SimpleGUIWithFileChooser { 
     private static final int PROPORTION = 3;
     private static final String SAVE_TEXT = "Save";
     private static final String BROWSE_TEXT = "Browse...";
@@ -54,18 +53,15 @@ public final class SimpleGUIWithFileChooser {
         this.browseButton.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent ae) {
+            public void actionPerformed(final ActionEvent ae) {
                 final var fChooser = new JFileChooser();
-                if(fChooser.showOpenDialog(browseButton) == JFileChooser.APPROVE_OPTION) {
+                if (fChooser.showOpenDialog(browseButton) == JFileChooser.APPROVE_OPTION) {
                     controller.setCurrentFile(fChooser.getSelectedFile());
-                    currentFile.setEditable(true);
                     currentFile.setText(controller.getPath());
-                    currentFile.setEditable(false);
                 } else {
                     JOptionPane.showMessageDialog(browseButton, ae);
                 }      
             }
-
         });
         this.saveButton.addActionListener(new ActionListener() {
 
@@ -78,7 +74,6 @@ public final class SimpleGUIWithFileChooser {
                     e.printStackTrace();
                 }                
             }
-            
         });
     }
 
@@ -91,7 +86,7 @@ public final class SimpleGUIWithFileChooser {
         this.frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final var myGUI = new SimpleGUIWithFileChooser();
         myGUI.display();
     }

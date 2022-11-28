@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Application controller. Performs the I/O.
  */
-public class Controller {
+public final class Controller {
 
     private static String HOME_FOLDER = System.getProperty("user.home");
     private static String SEPARATOR = System.getProperty("file.separator");

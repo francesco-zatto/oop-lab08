@@ -59,7 +59,7 @@ public final class SimpleGUI {
         this.frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final var myGUI = new SimpleGUI();
         myGUI.display();
     }
