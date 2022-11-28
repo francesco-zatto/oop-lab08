@@ -1,5 +1,6 @@
 package it.unibo.mvc;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -25,7 +26,7 @@ public final class SimpleController implements Controller {
     }
 
     public List<String> getHistory() {
-        return this.history;
+        return Collections.unmodifiableList(this.history);
     } 
 
     public void setNextString(final String s) {
